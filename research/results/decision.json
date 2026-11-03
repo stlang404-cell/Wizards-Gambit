@@ -1,0 +1,68 @@
+{
+  "weights": [
+    14,
+    12,
+    12,
+    8,
+    8,
+    10,
+    8,
+    8,
+    6,
+    6,
+    5,
+    3
+  ],
+  "baseline": [
+    [
+      "Ember",
+      3.86
+    ],
+    [
+      "Rune",
+      3.82
+    ],
+    [
+      "Nexus",
+      3.53
+    ],
+    [
+      "Cross",
+      3.32
+    ],
+    [
+      "Eight",
+      3.19
+    ]
+  ],
+  "one_weight_half_to_one_and_half_winners": {
+    "Ember": 22,
+    "Rune": 2,
+    "Eight": 0,
+    "Nexus": 0,
+    "Cross": 0
+  },
+  "depth_replay_heavy": [
+    [
+      "Rune",
+      3.8615384615384616
+    ],
+    [
+      "Ember",
+      3.6615384615384614
+    ],
+    [
+      "Nexus",
+      3.6384615384615384
+    ],
+    [
+      "Eight",
+      3.376923076923077
+    ],
+    [
+      "Cross",
+      3.0153846153846153
+    ]
+  ],
+  "warning": "Subjective scores, not measured depth"
+}

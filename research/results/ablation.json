@@ -1,0 +1,53 @@
+{
+  "seconds": 1.4783470630645752,
+  "rows": [
+    {
+      "seals": 0,
+      "games": 40,
+      "first_wins": 9,
+      "second_wins": 31,
+      "draws": 0,
+      "mean_plies": 33.875,
+      "casts_per_game": 0.0,
+      "reasons": {
+        "capture": 40
+      }
+    },
+    {
+      "seals": 1,
+      "games": 40,
+      "first_wins": 12,
+      "second_wins": 28,
+      "draws": 0,
+      "mean_plies": 34.05,
+      "casts_per_game": 0.0,
+      "reasons": {
+        "capture": 40
+      }
+    },
+    {
+      "seals": 2,
+      "games": 40,
+      "first_wins": 12,
+      "second_wins": 28,
+      "draws": 0,
+      "mean_plies": 34.05,
+      "casts_per_game": 0.0,
+      "reasons": {
+        "capture": 40
+      }
+    },
+    {
+      "seals": 3,
+      "games": 40,
+      "first_wins": 12,
+      "second_wins": 28,
+      "draws": 0,
+      "mean_plies": 34.05,
+      "casts_per_game": 0.0,
+      "reasons": {
+        "capture": 40
+      }
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+# Ember Six — selected research baseline v0.1
+This is a complete frozen rules specification for continued testing, not a release-balanced game. Candidate document common rules plus Ember row are normative; this file expands every player-facing detail. A rules change requires new version and fresh benchmarks.
+
+## Setup and movement
+Use a 6×6 board, files a–f and ranks 1–6. First player's back row rank 1: Warden, Hexweaver, Archwizard, Spellblade, Hexweaver, Warden. Rank 2: six Familiars. Second player's rank 6 from a–f: Warden, Hexweaver, Spellblade, Archwizard, Hexweaver, Warden; rank 5 six Familiars. Ranks 3–4 empty. Each army has A×1 W×2 H×2 S×1 F×6.
+
+A moves/captures (dx,dy) where max(abs(dx),abs(dy))=1. W moves (±1,0),(±2,0),(0,±1),(0,±2); a length-two W move requires its intermediate square empty. H moves (±1,±1),(±2,±2) with same intermediate rule. S moves (±2,±1),(±1,±2) and jumps. F moves (±1,0),(0,±1); retreat and sideways capture allowed. Each destination must be inside the board and not occupied by a friend. Captures remove the destination enemy permanently. No promotion, forward bias or resurrection.
+
+## Concord
+Two seals per side displayed publicly. Choose two different friendly pieces whose file and rank distances are each at most one. Spend one seal; swap their squares simultaneously; end turn. Both endpoints occupied before and after; nobody captured. A can participate. Which piece is clicked first has no significance. All piece types can cast; there is no caster status, cooldown, duration or replenishment. A swap of identical types is permitted, still costs a seal and counts as a quiet action. This cannot be a resource-neutral repetition. No spell may be added during an opponent turn. Capturing the A with an ordinary move wins immediately regardless of possible future swaps.
+
+Example: A on c3, friendly F on d3 can exchange. If the enemy W on c5 has an open c4, leaving A on c3 would allow a capture; exchanging evacuates A to d3 but does not guarantee d3 safe. W on a1 cannot reach a3 through a friendly F on a2. S on d1 may jump to c3 or e3 through a blocked second rank. A on c3 may capture an enemy A on c4 immediately. This deliberately uses capture-the-royal rather than checkmate; UI must clearly warn of direct capture threats.
+
+## Turn and termination
+First side moves. Exactly one ordinary move or Concord is mandatory. Apply action, consume seal if needed, reset quiet count on capture otherwise increment, advance ply and switch side. Then adjudicate royal capture, third repeated position, 60 noncapture plies, 180 total plies, then lack of legal actions (side to move loses), in that order. Repetition identity includes board, side and remaining seals; quiet/ply counters are excluded. No insufficient-material shortcut: A versus A may still have a capture outcome. No voluntary pass or draw offer. Tournament timeout loses, resignation loses; local analysis undo has no ranked result. Clock state is not part of repetition but is saved and logged. Corrupted states with no/both A before play are rejected by the future public API.
+
+## Values and motifs
+Prototype values W=5 H=4 S=3 F=1 and A=1000 are evaluation seeds, not measured exchange ratios. A's terminal value must be separate in production. W/H reach up to eight targets on an empty central square; S up to eight, F four, A eight, with different edge losses. H remains on one square color; W needs lines; S is edge-sensitive; F is short-ranged but can screen and trade; A is indispensable and vulnerable. Ablate each piece before concluding usefulness.
+
+Learnable motifs: twin hex (fork), vow pin (moving a blocker exposes A; strategic not legally forced), rune skewer (short-ray target behind another), unveiled ray (Concord moves a blocker), seal sacrifice (spend magic to induce a capture), mirror trap (both swap endpoints threatened), seal zugzwang (a spell is the only safe tempo), anchor fork (both enemy swap endpoints threatened). Names label hypotheses; puzzle positions and forced proofs remain to be curated. No claim that all occur frequently.
+
+Fundamental unresolved concern: standard chess-like moves may make Concord insufficiently distinctive. Human tests must demonstrate interesting exchanges rather than mere emergency royal evacuation. Compare no-spell and one-/three-seal ablations. If that fails, return to Rune rather than adding more abilities to conceal a weak core.

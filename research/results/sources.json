@@ -1,0 +1,42 @@
+[
+  {
+    "name": "glicko",
+    "url": "https://www.glicko.net/glicko/glicko2.pdf",
+    "status": 200,
+    "bytes": 124065
+  },
+  {
+    "name": "lmsr",
+    "url": "https://mason.gmu.edu/~rhanson/mktscore.pdf",
+    "status": 200,
+    "bytes": 152260
+  },
+  {
+    "name": "engine",
+    "url": "https://www.chessprogramming.org/Alpha-Beta",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  {
+    "name": "pwa",
+    "url": "https://webkit.org/blog/13878/web-push-for-web-apps-on-ios-and-ipados/",
+    "status": 200,
+    "bytes": 44688
+  },
+  {
+    "name": "arimaa",
+    "url": "https://arimaa.com/arimaa/learn/rulesIntro.html",
+    "status": 200,
+    "bytes": 7668
+  },
+  {
+    "name": "hive",
+    "url": "https://www.gen42.com/downloads/rules/hive/Hive_English_Rules.pdf",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "name": "tak",
+    "url": "https://ustak.org/play-beautiful-game-tak/",
+    "status": 200,
+    "bytes": 94442
+  }
+]

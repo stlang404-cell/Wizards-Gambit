@@ -1,0 +1,9 @@
+{
+  "seed": 772,
+  "trades_attempted": 10000,
+  "market_maker_worst_net_loss": -439.63788461178046,
+  "subsidy_bound": 109.86122886681098,
+  "conservation_error": 7.275957614183426e-12,
+  "min_cash": 855.3348345292733,
+  "calibration": "NOT TESTED"
+}

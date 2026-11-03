@@ -1,0 +1,17 @@
+test_blink_no_capture (test_engine.Rules.test_blink_no_capture) ... ok
+test_capture_rules_do_not_change_hold (test_engine.Rules.test_capture_rules_do_not_change_hold) ... ok
+test_draws (test_engine.Rules.test_draws) ... ok
+test_hold_objective (test_engine.Rules.test_hold_objective) ... ok
+test_initial_symmetry (test_engine.Rules.test_initial_symmetry) ... ok
+test_ray_block (test_engine.Rules.test_ray_block) ... ok
+test_royal_capture (test_engine.Rules.test_royal_capture) ... ok
+test_seals_distinguish_repetition (test_engine.Rules.test_seals_distinguish_repetition) ... ok
+test_spell_spends (test_engine.Rules.test_spell_spends) ... ok
+test_swap_atomic_and_nonrenewable (test_engine.Rules.test_swap_atomic_and_nonrenewable) ... ok
+test_terminal_priority (test_engine.Rules.test_terminal_priority) ... ok
+test_walk_properties_replay_undo (test_engine.Rules.test_walk_properties_replay_undo) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.026s
+
+OK

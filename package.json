@@ -1,0 +1,21 @@
+{
+  "name": "wizards-gambit",
+  "version": "0.0.1",
+  "private": true,
+  "description": "WIZARD'S GAMBIT — Ember Six rules core (M0)",
+  "type": "module",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json && tsc -p tsconfig.test.json",
+    "test": "vitest run",
+    "test:slow": "WG_SLOW=1 vitest run",
+    "check": "npm run typecheck && npm run test",
+    "fixtures:golden": "python3 tools/gen_golden.py fixtures/golden_replays_v0.1.json",
+    "perft": "node --experimental-strip-types tools/perft-cli.ts"
+  },
+  "devDependencies": {
+    "@types/node": "22.18.0",
+    "typescript": "5.9.3",
+    "vitest": "3.2.4"
+  }
+}
