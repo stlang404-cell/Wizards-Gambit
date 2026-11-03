@@ -14,9 +14,11 @@
     "verbatimModuleSyntax": true,
     "allowImportingTsExtensions": true,
     "isolatedModules": true,
+    "erasableSyntaxOnly": true,
     "skipLibCheck": true,
     "noEmit": true,
     "types": []
   },
-  "include": ["src"]
+  "include": ["src"],
+  "exclude": ["src/app", "src/ai/worker.ts"]
 }

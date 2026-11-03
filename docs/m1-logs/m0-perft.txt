@@ -1,0 +1,4 @@
+{"depth":1,"raw":34,"rawMs":0,"rawLeavesPerSec":93270,"terminalAware":34,"terminalMs":1}
+{"depth":2,"raw":1156,"rawMs":0,"rawLeavesPerSec":3323510,"terminalAware":1156,"terminalMs":5}
+{"depth":3,"raw":40936,"rawMs":3,"rawLeavesPerSec":12585813,"terminalAware":40936,"terminalMs":36}
+{"depth":4,"raw":1449035,"rawMs":31,"rawLeavesPerSec":47111550,"terminalAware":1448971,"terminalMs":1219}
