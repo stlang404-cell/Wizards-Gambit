@@ -75,6 +75,8 @@ export class BoardView {
       this.#draw(t);
     };
     this.#raf = requestAnimationFrame(loop);
+    // Browser-test hook (only with ?e2e in the URL): latest board's square centres.
+    if (location.search.includes('e2e')) (window as unknown as { __wgBoard: BoardView }).__wgBoard = this;
   }
 
   destroy(): void { cancelAnimationFrame(this.#raf); }
@@ -275,13 +277,17 @@ export class BoardView {
     }
     for (const sq of s.concord) {
       const o = this.#origin(sq);
+      ctx.fillStyle = `rgba(150,90,255,${0.22 + 0.14 * pulse})`;
+      ctx.fillRect(o.x + 1, o.y + 1, TILE - 2, TILE - 2);
+      ctx.fillStyle = 'rgba(200,150,255,0.95)';
+      this.#frameRect(o.x + 1, o.y + 1, TILE - 2, TILE - 2);
       // rotating rune ring of 8 dots
       for (let i = 0; i < 8; i++) {
         const ang = t / 500 + (i * Math.PI) / 4;
         const x = Math.round(o.x + TILE / 2 + Math.cos(ang) * 8 - 0.5);
         const y = Math.round(o.y + TILE / 2 + Math.sin(ang) * 8 - 0.5);
-        ctx.fillStyle = i % 2 ? 'rgba(200,150,255,0.95)' : 'rgba(95,242,226,0.95)';
-        ctx.fillRect(x, y, 1, 1);
+        ctx.fillStyle = i % 2 ? 'rgba(220,180,255,1)' : 'rgba(95,242,226,1)';
+        ctx.fillRect(x, y, 2, 2);
       }
     }
     if (s.showCursor && s.cursor !== null) {

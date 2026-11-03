@@ -16,6 +16,8 @@ export interface GameScreenHost {
   settings(): Settings;
   onRecord(rec: MatchRecord, setup: MatchSetup): void;
   onFinished(rec: MatchRecord): void;
+  /** A match left unfinished (restart mid-game): archive it as abandoned. */
+  onAbandon(rec: MatchRecord): void;
   toMenu(): void;
   newMatch(setup: MatchSetup): void;
   humanId: string;
@@ -65,6 +67,7 @@ export class GameScreen {
   }
 
   destroy(): void {
+    if (this.#isE2E()) delete (window as unknown as { __wg?: unknown }).__wg;
     this.controller.dispose();
     this.#ai.dispose();
     this.#hintAi.dispose();
@@ -184,6 +187,7 @@ export class GameScreen {
 
   #restart(): void {
     this.#dialog.close();
+    if (!this.controller.game.isOver && this.controller.game.ply > 0) this.#host.onAbandon(this.controller.record('abandoned'));
     this.controller.restart((Math.random() * 2 ** 32) >>> 0);
   }
 

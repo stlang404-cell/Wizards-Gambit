@@ -1,0 +1,100 @@
+{
+ "tool": "tools/e2e.mjs",
+ "when": "2026-11-03T01:24:24.189Z",
+ "browser": "chromium 153.0.8010.12",
+ "passed": 12,
+ "failed": 0,
+ "results": [
+  {
+   "name": "menu loads",
+   "ok": true,
+   "ms": 338
+  },
+  {
+   "name": "tutorial: every lesson completed by real clicks",
+   "ok": true,
+   "ms": 2563,
+   "detail": {
+    "lessons": 12,
+    "completed": 12
+   }
+  },
+  {
+   "name": "human vs AI (Novice): complete match by clicks, record + archive",
+   "ok": true,
+   "ms": 5702,
+   "detail": {
+    "humanMoves": 15,
+    "casts": 1,
+    "outcome": {
+     "winner": -1,
+     "reason": "royal-capture"
+    },
+    "plies": 30,
+    "result": "0-1"
+   }
+  },
+  {
+   "name": "archive replay viewer steps through a stored match",
+   "ok": true,
+   "ms": 1077
+  },
+  {
+   "name": "undo in human-vs-AI returns to the human turn",
+   "ok": true,
+   "ms": 443
+  },
+  {
+   "name": "restart mid-game archives the old match as abandoned",
+   "ok": true,
+   "ms": 359
+  },
+  {
+   "name": "pass-and-play: Concord, save/restore across reload, repetition draw",
+   "ok": true,
+   "ms": 2169,
+   "detail": {
+    "outcome": {
+     "winner": 0,
+     "reason": "repetition"
+    }
+   }
+  },
+  {
+   "name": "AI exhibition (Novice vs Adept): pause/resume, finishes legally",
+   "ok": true,
+   "ms": 5673,
+   "detail": {
+    "plies": 84,
+    "result": "0-1",
+    "reason": "royal-capture"
+   }
+  },
+  {
+   "name": "corrupt save is reported and backed up, app still starts",
+   "ok": true,
+   "ms": 173
+  },
+  {
+   "name": "rules and settings pages render",
+   "ok": true,
+   "ms": 723
+  },
+  {
+   "name": "mobile viewport 390×844: no horizontal overflow, board fits, tap to move",
+   "ok": true,
+   "ms": 3460,
+   "detail": {
+    "sw": 390,
+    "iw": 390,
+    "cw": 373.328125
+   }
+  },
+  {
+   "name": "no console errors or uncaught exceptions",
+   "ok": true,
+   "ms": 0
+  }
+ ],
+ "consoleErrors": []
+}

@@ -4,7 +4,7 @@ import { think, type LevelId } from '../src/ai/search.ts';
 import { MatchController, type AiPort, type MatchEvent, type MatchSetup } from '../src/match/controller.ts';
 import { validateMatchRecord, type MatchRecord } from '../src/match/record.ts';
 import {
-  BACKUP_PREFIX, MemoryStore, SAVE_KEY, archiveRecord, emptySave, exportArchive, importArchive, loadSave, writeSave,
+  BACKUP_PREFIX, MemoryStore, SAVE_KEY, type SaveFile, archiveRecord, emptySave, exportArchive, importArchive, loadSave, writeSave,
 } from '../src/persistence/save.ts';
 import type { GameRecord } from '../src/rules/game.ts';
 
@@ -235,7 +235,7 @@ describe('save / restore', () => {
       c.play(a('c2xc3'));
       return c.record();
     })();
-    let file = { ...emptySave('human:p', 'now'), current: setupRecord() };
+    let file: SaveFile = { ...emptySave('human:p', 'now'), current: setupRecord() };
     file = archiveRecord(file, fin);
     file = archiveRecord(file, fin); // idempotent
     expect(writeSave(store, file)).toBeNull();

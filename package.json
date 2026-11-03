@@ -1,8 +1,8 @@
 {
   "name": "wizards-gambit",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "private": true,
-  "description": "WIZARD'S GAMBIT — Ember Six rules core (M0)",
+  "description": "WIZARD'S GAMBIT \u2014 M1 first playable edition (Ember Six v0.1)",
   "type": "module",
   "engines": {
     "node": ">=20"
@@ -10,11 +10,19 @@
   "scripts": {
     "typecheck": "tsc -p tsconfig.json && tsc -p tsconfig.test.json && tsc -p tsconfig.app.json && tsc -p tsconfig.worker.json",
     "test": "vitest run",
-    "test:slow": "WG_SLOW=1 vitest run",
+    "test:slow": "node tools/run-slow.mjs",
     "check": "npm run typecheck && npm run test",
     "fixtures:golden": "python3 tools/gen_golden.py fixtures/golden_replays_v0.1.json",
     "perft": "node --experimental-strip-types tools/perft-cli.ts",
-    "perft:verify": "node --experimental-strip-types tools/perft-verify.ts"
+    "perft:verify": "node --experimental-strip-types tools/perft-verify.ts",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite build && node tools/serve.mjs --open",
+    "start": "node tools/serve.mjs --open",
+    "e2e": "vite build && node tools/e2e.mjs",
+    "bench": "node --experimental-strip-types --no-warnings tools/ai-bench.ts",
+    "icons": "node --experimental-strip-types --no-warnings tools/make-icons.ts",
+    "release": "vite build && node tools/make-release.mjs"
   },
   "devDependencies": {
     "@types/node": "22.18.0",

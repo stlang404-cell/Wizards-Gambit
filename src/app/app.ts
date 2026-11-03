@@ -39,7 +39,6 @@ export class App {
   readonly #root: HTMLElement;
   readonly #store = safeStore();
   #save: SaveFile;
-  #currentGame: Game | null;
   #screen: { destroy?: () => void } | null = null;
   #notices: string[] = [];
 
@@ -47,7 +46,6 @@ export class App {
     this.#root = root;
     const loaded = loadSave(this.#store, () => `human:${crypto.randomUUID()}`, new Date().toISOString());
     this.#save = loaded.file;
-    this.#currentGame = loaded.currentGame;
     this.#notices = [...loaded.warnings];
     this.#persist();
     window.addEventListener('hashchange', () => this.#route());
@@ -113,6 +111,8 @@ export class App {
 
     this.#frame('Main menu',
       h('section', { class: 'hero' },
+        h('div', { class: 'hero-pieces', 'aria-hidden': 'true' },
+          ...[2, -3, 1, -4, 5, -1, 3, -2].map((p) => h('img', { src: spriteDataUrl(p, 4), alt: '', width: 64, height: 64 }))),
         h('h1', {}, 'Wizard’s Gambit'),
         h('p', { class: 'tagline' }, 'Ember Six · a duel of wardens, hexweavers and spellblades on a six-by-six board'),
         h('p', { class: 'small muted' }, 'Rules: Ember Six v0.1, a provisional research ruleset. All play is local and unrated.')),
@@ -168,7 +168,6 @@ export class App {
       const rec: MatchRecord = { ...cur.record, status: 'abandoned', endedAt: new Date().toISOString() };
       this.#save = archiveRecord({ ...this.#save, current: null }, rec);
     } else this.#save = { ...this.#save, current: null };
-    this.#currentGame = null;
     this.#persist();
   }
 
@@ -187,7 +186,8 @@ export class App {
       settings: () => this.#save.settings,
       humanId: this.#save.profileId,
       onRecord: (record, setup) => { this.#save = { ...this.#save, current: { record, setup } }; this.#persist(); },
-      onFinished: (rec) => { this.#save = archiveRecord({ ...this.#save, current: null }, rec); this.#currentGame = null; this.#persist(); },
+      onFinished: (rec) => { this.#save = archiveRecord({ ...this.#save, current: null }, rec); this.#persist(); },
+      onAbandon: (rec) => { this.#save = archiveRecord({ ...this.#save, current: null }, rec); this.#persist(); },
       toMenu: () => this.#go('menu'),
       newMatch: (setup) => this.#newMatch(setup),
     });

@@ -1,0 +1,8 @@
+✓ 27 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                  0.80 kB │ gzip:  0.43 kB
+dist/assets/worker-BXYD5DZf.js  19.39 kB
+dist/assets/index-Blm5mgnv.css   8.54 kB │ gzip:  2.79 kB
+dist/assets/index-CLRx189y.js   71.60 kB │ gzip: 25.92 kB
+✓ built in 519ms
