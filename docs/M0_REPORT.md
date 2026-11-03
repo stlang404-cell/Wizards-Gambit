@@ -19,12 +19,12 @@ $ npm run check
 > tsc -p tsconfig.json && tsc -p tsconfig.test.json
 > vitest run
  Test Files  7 passed (7)
-      Tests  211 passed | 2 skipped (213)
+      Tests  212 passed | 2 skipped (214)
    Duration  12.80s
 
 $ npm run test:slow        # WG_SLOW=1, runs the 2 skipped depth-4 reference perfts
  Test Files  7 passed (7)
-      Tests  213 passed (213)
+      Tests  214 passed (214)
    Duration  13.20s
 ```
 
@@ -58,7 +58,7 @@ $ npm run test:slow        # WG_SLOW=1, runs the 2 skipped depth-4 reference per
 | 2 | 1,156 | 1,156 | 1,156 / 1,156 | ✓ |
 | 3 | 40,936 | 40,936 | 40,936 / 40,936 | ✓ |
 | 4 | 1,449,035 | 1,448,971 | 1,449,035 / 1,448,971 (royal-pruned) | ✓ (slow) |
-| 5 | 31,631,115 | 31,625,446 | pending (Python run in progress at commit time) | not run |
+| 5 | 31,631,115 | 31,625,446 | 31,631,115 / 31,625,446 (161.7 s + 180.8 s) | not run |
 
 "Raw" expands every legal action with no terminal pruning, which is what `research/prototype/perft.py` does. "Terminal-aware" gives a terminal position no children.
 
@@ -86,7 +86,7 @@ $ npm run test:slow        # WG_SLOW=1, runs the 2 skipped depth-4 reference per
 ## Remaining risks / not done
 
 - The golden replays and the reference generator both come from the same rules interpretation (research/04 as read by the prototype author and by me). They catch porting bugs, not misreadings of the rules. A human rules review and paper play are still needed.
-- Depth-5 perft has only been checked against the Python prototype; the TS reference generator was not run that deep.
+- Depth-5 perft has only been checked against the Python prototype (`fixtures/perft_d5_python_v0.1.json`; raw checked in every test run, pruned under `test:slow`); the TS reference generator was not run that deep.
 - Clocks, timeouts and resignation are match-layer concerns and are not implemented (planned for M1/M2). The rules have no draw offers or passing, by design.
 - Draw-aware search, TT draw context, and benchmarks belong to M2. The prototype agents were not ported.
 - Next step is **M1** (playable board): Canvas2D plus semantic HTML, keyboard and touch, a complete local game. Its acceptance gate needs 10 newcomer playtests, which only a human can run.

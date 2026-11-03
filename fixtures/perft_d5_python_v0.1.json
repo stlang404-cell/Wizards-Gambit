@@ -1,0 +1,8 @@
+{
+ "depth": 5,
+ "raw": 31631115,
+ "rawSeconds": 161.7,
+ "royalPruned": 31625446,
+ "prunedSeconds": 180.8,
+ "source": "tools/gen_perft.py perft/perft_terminal at depth 5 from the start (research/prototype/engine.py), Python 3.13.18, Xeon 2.8GHz shared host"
+}
