@@ -5,5 +5,8 @@
 - `src/rules` is pure: no DOM, Node, UI, wallet or unlock imports (enforced by `tsconfig.json` `types: []`, `lib: ES2022`). Untrusted input goes through `Game` / `validatePosition`; `internal.*` (make/unmake, generation, perft) is unchecked.
 - Ranked rules never depend on wallet/unlocks. No Godot, paid APIs, remote AI inference, mandatory accounts or real-money gambling. Python is research tooling only, never shipped.
 - `research/` is the imported research package (history). Do not rewrite its results; add new result files instead.
-- Before pushing: `npm run check` (typecheck + tests). `npm run test:slow` adds the depth-4 independent-reference perft.
+- Module boundaries: `rules` ← `ai` ← `match` ← `persistence` / `play` / `tutorial` ← `app`. Only `src/app` and `src/ai/worker.ts` may touch the DOM/worker globals (separate tsconfigs enforce this). The UI never decides legality; it asks `Game`.
+- Never invent rating changes: no rating code exists until a validated Glicko-2 lands (M3). Match records (`wg.match/1`) are the source of truth for future ratings/markets; change their schema only with a new schema version.
+- AI difficulty claims must come from `tools/ai-bench.ts` results committed under `docs/results/`.
+- Before pushing: `npm run check` (typecheck + tests). `npm run test:slow` adds the depth-4 independent-reference perft. UI changes: `npm run e2e` (needs local Playwright/Chromium).
 - Report measurements with commands, seeds, toolchain and hardware. No invented metrics.
