@@ -29,10 +29,10 @@ describe('perft', () => {
     expect(fixture.start).toEqual({ '1': 34, '2': 1156, '3': 40936, '4': 1449035 });
   });
 
-  it('start position depth 5 matches the Python oracle (raw; royal-pruned under WG_SLOW)', () => {
-    const d5 = JSON.parse(readFileSync(new URL('../fixtures/perft_d5_python_v0.1.json', import.meta.url), 'utf8')) as { raw: number; royalPruned: number };
+  // Royal-pruned depth 5 (~34 s, blocks the Vitest worker) is checked by `npm run perft:verify`.
+  it('start position depth 5 matches the Python oracle (raw)', () => {
+    const d5 = JSON.parse(readFileSync(new URL('../fixtures/perft_d5_python_v0.1.json', import.meta.url), 'utf8')) as { raw: number };
     expect(internal.perft(initialPosition(), 5)).toBe(d5.raw);
-    if (SLOW) expect(internal.perftTerminal(initialPosition(), 5)).toBe(d5.royalPruned);
   });
 
   it('independent reference generator agrees at depth 1-3 from the start', () => {

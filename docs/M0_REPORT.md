@@ -26,6 +26,9 @@ $ npm run test:slow        # WG_SLOW=1, runs the 2 skipped depth-4 reference per
  Test Files  7 passed (7)
       Tests  214 passed (214)
    Duration  13.20s
+
+$ npm run perft:verify     # depth-5 raw + terminal-aware vs Python oracle, ~35 s
+{"depth":5,"raw":31631115,"expectedRaw":31631115,"pruned":31625446,"expectedPruned":31625446,"ok":true}
 ```
 
 ## What was built
@@ -86,7 +89,7 @@ $ npm run test:slow        # WG_SLOW=1, runs the 2 skipped depth-4 reference per
 ## Remaining risks / not done
 
 - The golden replays and the reference generator both come from the same rules interpretation (research/04 as read by the prototype author and by me). They catch porting bugs, not misreadings of the rules. A human rules review and paper play are still needed.
-- Depth-5 perft has only been checked against the Python prototype (`fixtures/perft_d5_python_v0.1.json`; raw checked in every test run, pruned under `test:slow`); the TS reference generator was not run that deep.
+- Depth-5 perft has only been checked against the Python prototype (`fixtures/perft_d5_python_v0.1.json`; raw checked in every test run, both checked by `npm run perft:verify`); the TS reference generator was not run that deep.
 - Clocks, timeouts and resignation are match-layer concerns and are not implemented (planned for M1/M2). The rules have no draw offers or passing, by design.
 - Draw-aware search, TT draw context, and benchmarks belong to M2. The prototype agents were not ported.
 - Next step is **M1** (playable board): Canvas2D plus semantic HTML, keyboard and touch, a complete local game. Its acceptance gate needs 10 newcomer playtests, which only a human can run.
